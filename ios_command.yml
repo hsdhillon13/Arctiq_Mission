@@ -1,0 +1,23 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+   host: "{{ ansible_host}}"
+   username: user
+   password: user
+   transport: ssh
+
+  tasks:
+   - name: Define connection Provider
+     set_fact:
+       provider:
+        username: user
+        password: user
+        auth_pass: user
+
+   - name: show interface info
+     ios_command:
+       provider: "{{ provider }}"
+       commands: show ip int brief
+     register: showipintbrief

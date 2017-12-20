@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+   host: "{{ ansible_host}}"
+   username: user
+   password: user
+   transport: ssh
+  tasks:
+   - name: connection check
+     ping:
